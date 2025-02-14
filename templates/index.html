@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Background Remover</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>AI Background Remover</h2>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required>
+        <button type="submit">Remove Background</button>
+    </form>
+
+    {% if uploaded %}
+    <div class="result">
+        <div class="image-container">
+            <img src="{{ input_image }}" alt="Uploaded Image">
+            <span class="arrow">➡️</span>
+            <img src="{{ output_image }}" alt="Background Removed">
+        </div>
+        <a href="{{ output_image }}" download="background_removed.png">
+            <button class="download-btn">Download Image</button>
+        </a>
+    </div>
+    {% endif %}
+</body>
+</html>
